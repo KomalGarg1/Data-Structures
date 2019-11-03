@@ -1,0 +1,68 @@
+Class Queue
+{
+static int front, rear, capacity;
+static int queue[];
+Queue(int c)
+{
+capacity =c;
+front = rear =0;
+queue = new int[capacity];
+}
+//insertion
+public static void enqueue(int data)
+{
+if(rear==capacity)
+{
+System.out.println("Queue is full");
+}
+else
+{
+queue[rear]=data;
+rear++;
+}
+}
+//deletion
+public static void dequeue()
+{
+if(front==rear)
+{
+System.out.println("Queue is empty.");
+}
+else
+{
+for(int i=0; i<rear-1; i++)
+{
+queue[i]=queue[i+1];
+}
+if(rear<capacity)
+queue[rear]=0;
+rear--;
+}
+}
+//display
+public static void display()
+{
+if(front==rear)
+System.out.println("queue is empty");
+else
+{
+for(int i=0; i<rear; i++)
+System.out.print(queue[i]+" -> ");
+}
+}
+public static void main(String args[])
+{
+Queue q= new Queue(4);
+q.enqueue(10);
+q.enqueue(20);
+q.enqueue(30);
+q.enqueue(40);
+q.display();
+q.dequeue();
+q.dequeue();
+System.out.println("After remving data from queue");
+q.display();
+		
+	}
+
+}
